@@ -50,14 +50,14 @@ Os principais objetivos deste projeto são:
 Antes de começar, certifique-se de ter instalado:
 
 
-## 📋 Lista de Issues (Tarefas Iniciais)
+## Lista de Issues (Tarefas Iniciais)
 
 - [x] Criar estrutura inicial do repositório
 - [ ] Implementar pipeline de coleta de dados
 - [ ] Desenvolver módulo de análise com IA
 - [ ] Gerar relatórios automáticos (label: `good first issue`)
 - [ ] Realizar testes de performance e precisão
-## 🤝 Como Contribuir
+## Como Contribuir
 
 1. Faça um fork do projeto
 2. Crie uma branch com sua feature: `git checkout -b minha-feature`
