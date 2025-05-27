@@ -50,31 +50,6 @@ Os principais objetivos deste projeto são:
 Antes de começar, certifique-se de ter instalado:
 
 
-
-
-## ⚙️ Guia para Build Local do Sistema
-
-1. Clone o repositório:
-    ```bash
-    git clone https://github.com/seu-usuario/agente-ia-previdencia.git
-    cd agente-ia-previdencia
-    ```
-
-2. Crie e ative o ambiente virtual:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # Linux/Mac
-    .\venv\Scripts\activate   # Windows
-    ```
-
-3. Instale as dependências:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. Execute os notebooks ou scripts conforme a documentação na pasta `/src`.
-
-
 ## 📋 Lista de Issues (Tarefas Iniciais)
 
 - [x] Criar estrutura inicial do repositório
