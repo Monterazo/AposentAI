@@ -1,5 +1,5 @@
 # Projeto de Engenharia de Software
-AI agent programmed to make analysis for the Brazilian social security service
+Agente de IA programado para fazer análises para a Previdência Social brasileira
 
 # AposentAI
  
@@ -19,6 +19,7 @@ Este projeto desenvolve uma solução de Inteligência Artificial para otimizar 
 * **Frontend:** 
 * **Banco de Dados:** CNIS (Cadastro Nacional de Informações Sociais), Processos administrativos de concessão de benefícios, Processos judiciais previdenciários, Jusbrasil.
 * **Servidor:**
+* **Gestão:** Github Projects (Kanban e gestão ágil)
 
 ## Pré-requisitos
 
