@@ -35,56 +35,6 @@ Os principais objetivos deste projeto são:
     * Visualização de dados e geração de relatórios.
     * APIs para integração com outros sistemas.
  
-## Estrutura Organizacional do Código (Diagrama C4)
-
-```c4plantuml
-@startuml
-
-!include <c4/C4_Context>
-!include <c4/C4_Container>
-!include <c4/C4_Component>
-!include <c4/C4_Deployment>
-
-' System Context
-System_Context(sistema, "Agente de IA Previdenciário", "Um sistema inteligente para automatizar a análise de dados e documentos na Previdência Social brasileira.")
-
-' System Landscape
-' SystemLandscapeBoundary(boundary, "Previdência Social") {
-'   System(inss, "INSS", "Sistema de gestão da Previdência Social")
-'   System_Ext(governo, "Governo", "Outros sistemas governamentais")
-'   Rel(sistema, inss, "Usa dados de", "HTTPS")
-'   Rel(sistema, governo, "Integra com", "API")
-' }
-
-' Container Diagram
-Container_Boundary(c1, "Containers") {
-  Container(web_app, "Aplicação Web", "Python / Django", "Interface web para usuários interagirem com o agente de IA.")
-  Container(api, "API", "Python / Flask", "API para comunicação entre a aplicação web e os módulos de IA.")
-  ContainerDb(db, "Banco de Dados", "PostgreSQL", "Armazena dados da aplicação e resultados das análises.")
-  Container(ia_analise_docs, "Módulo de Análise de Documentos", "Python / TensorFlow, NLTK", "Realiza a extração e análise de informações de documentos.")
-  Container(ia_analise_dados, "Módulo de Análise de Dados", "Python / Scikit-learn, Pandas", "Realiza a análise de dados estruturados e modelagem preditiva.")
-  
-  Rel(web_app, api, "Usa", "HTTPS")
-  Rel(api, db, "Lê e escreve", "JDBC/ODBC")
-  Rel(api, ia_analise_docs, "Usa", "API")
-  Rel(api, ia_analise_dados, "Usa", "API")
-}
-
-' Component Diagram (Exemplo para Análise de Documentos)
-Component_Boundary(c2, "Componentes do Módulo de Análise de Documentos") {
-  Component(extrator_texto, "Extrator de Texto", "Python", "Extrai texto de diferentes formatos de arquivo.")
-  Component(classificador_docs, "Classificador de Documentos", "Python / TensorFlow", "Classifica documentos em categorias (e.g., laudo médico, comprovante de renda).")
-  Component(extrator_entidades, "Extrator de Entidades", "Python / Spacy", "Extrai entidades nomeadas (e.g., nomes, datas, valores) do texto.")
-  Component(analisador_sentimento, "Analisador de Sentimento", "Python / NLTK", "Analisa o sentimento e o contexto do texto.")
-  
-  Rel(ia_analise_docs, extrator_texto, "Usa")
-  Rel(ia_analise_docs, classificador_docs, "Usa")
-  Rel(ia_analise_docs, extrator_entidades, "Usa")
-  Rel(ia_analise_docs, analisador_sentimento, "Usa")
-}
-
-@enduml
-
 
 
 ## Tecnologias Utilizadas
