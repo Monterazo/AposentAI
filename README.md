@@ -8,7 +8,7 @@ Este projeto desenvolve uma solução de Inteligência Artificial para otimizar 
 
 ## 🔗 Recursos do Projeto
 
-* **Quadro Kanban:** [Backlog · Kanban](https://github.com/Monterazo/AposentAI/projects/1)
+* **Quadro Kanban:** [Backlog · Kanban](https://github.com/users/Monterazo/projects/3)
 * **Issues (Tarefas e Bugs):** [Página de Issues](https://github.com/Monterazo/AposentAI/issues)
 
 ## Objetivos Principais e Funcionalidades Esperadas
@@ -64,7 +64,7 @@ Adoramos contribuições! Se você quer nos ajudar a melhorar o AposentAI, por f
 
 ## Lista de Issues (Tarefas Iniciais)
 
-A lista de tarefas iniciais está disponível e sendo gerenciada em nossa [página de Issues](https://github.com/URL_DO_SEU_REPOSITORIO/issues).
+A lista de tarefas iniciais está disponível e sendo gerenciada em nossa [página de Issues](https://github.com/Monterazo/AposentAI/issues).
 
 * Implementar pipeline de coleta de dados
 * Desenvolver módulo de análise com IA
