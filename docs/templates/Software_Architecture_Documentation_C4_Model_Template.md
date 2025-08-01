@@ -24,22 +24,22 @@ O diagrama de contexto fornece uma visão geral de alto nível do sistema Aposen
 ```mermaid
 graph TB
     %% Pessoas
-    admin[Administrador<br/>Gerencia o sistema e os usuários]
-    lawyer[Advogado<br/>Profissional institucional que gerencia casos de aposentadoria]
-    user[Usuário Comum<br/>Pessoa física que deseja simular e gerenciar sua aposentadoria]
+    admin["Administrador<br/>Gerencia o sistema e os usuários"]
+    lawyer["Advogado<br/>Profissional institucional que gerencia casos de aposentadoria"]
+    user["Usuário Comum<br/>Pessoa física que deseja simular e gerenciar sua aposentadoria"]
     
     %% Sistema Principal
     subgraph "Aposenta-AI"
-        aposentaAI[Aposenta-AI<br/>Plataforma modular para simulação e gestão de aposentadorias]
+        aposentaAI["Aposenta-AI<br/>Plataforma modular para simulação e gestão de aposentadorias"]
     end
     
     %% Sistemas Externos
-    googleAI[IA do Google<br/>Integração futura para processamento inteligente]
-    inssAPI[APIs do INSS<br/>APIs governamentais para automação de requerimentos]
-    stripe[Stripe / PayPal<br/>Sistema de pagamento por assinatura]
-    sendgrid[SendGrid / Amazon SES<br/>Serviço de envio de e-mails]
-    postgresql[PostgreSQL<br/>Banco de dados para armazenamento dos dados dos usuários e documentos]
-    langchain[LangChain<br/>Motor de IA para geração de simulações e análises]
+    googleAI["IA do Google<br/>Integração futura para processamento inteligente"]
+    inssAPI["APIs do INSS<br/>APIs governamentais para automação de requerimentos"]
+    stripe["Stripe / PayPal<br/>Sistema de pagamento por assinatura"]
+    sendgrid["SendGrid / Amazon SES<br/>Serviço de envio de e-mails"]
+    postgresql["PostgreSQL<br/>Banco de dados para armazenamento dos dados dos usuários e documentos"]
+    langchain["LangChain<br/>Motor de IA para geração de simulações e análises"]
     
     %% Relacionamentos
     admin -->|Acessa painel administrativo| aposentaAI
@@ -87,24 +87,24 @@ O diagrama de container mostra os principais blocos de software que compõem o s
 ```mermaid
 graph TB
     %% Pessoas
-    admin[Administrador<br/>Gerencia o sistema e os usuários]
-    lawyer[Advogado<br/>Profissional institucional que gerencia casos de aposentadoria]
-    user[Usuário Comum<br/>Pessoa física que deseja simular e gerenciar sua aposentadoria]
+    admin["Administrador<br/>Gerencia o sistema e os usuários"]
+    lawyer["Advogado<br/>Profissional institucional que gerencia casos de aposentadoria"]
+    user["Usuário Comum<br/>Pessoa física que deseja simular e gerenciar sua aposentadoria"]
 
     %% Sistema Principal
     subgraph "Aposenta-AI"
-        frontend[Frontend - Lovable<br/>Vite.js + Windy<br/>Interface web para upload de documentos, simulações e relatórios]
-        api[Backend - API<br/>FastAPI (Python)<br/>Gerencia autenticação, simulações, relatórios e integrações externas]
-        db[(Banco de Dados<br/>PostgreSQL<br/>Armazena usuários, documentos e dados de simulação)]
-        ai[Módulo de IA<br/>LangChain<br/>Executa simulações inteligentes e preenche requerimentos]
-        email[Serviço de E-mail<br/>SendGrid / Amazon SES<br/>Envia confirmações e notificações]
-        payment[Serviço de Pagamento<br/>Stripe / PayPal<br/>Gerencia planos e assinaturas]
-        auth[Autenticação<br/>OAuth / Login local<br/>Gerencia o login dos usuários com Strategy Pattern]
+        frontend["Frontend - Lovable<br/>Vite.js + Windy<br/>Interface web para upload de documentos, simulações e relatórios"]
+        api["Backend - API<br/>FastAPI (Python)<br/>Gerencia autenticação, simulações, relatórios e integrações externas"]
+        db[("Banco de Dados<br/>PostgreSQL<br/>Armazena usuários, documentos e dados de simulação")]
+        ai["Módulo de IA<br/>LangChain<br/>Executa simulações inteligentes e preenche requerimentos"]
+        email["Serviço de E-mail<br/>SendGrid / Amazon SES<br/>Envia confirmações e notificações"]
+        payment["Serviço de Pagamento<br/>Stripe / PayPal<br/>Gerencia planos e assinaturas"]
+        auth["Autenticação<br/>OAuth / Login local<br/>Gerencia o login dos usuários com Strategy Pattern"]
     end
 
     %% Sistemas Externos
-    inss[APIs do INSS<br/>Integração futura para requerimentos]
-    googleai[IA do Google<br/>Integração futura com serviços de IA]
+    inss["APIs do INSS<br/>Integração futura para requerimentos"]
+    googleai["IA do Google<br/>Integração futura com serviços de IA"]
 
     %% Relacionamentos com pessoas
     admin -->|Usa| frontend
@@ -148,24 +148,24 @@ Este diagrama detalha a arquitetura interna do container **Backend - API**, most
 ```mermaid
 graph TB
     %% Pessoas e Containers
-    user[Usuário<br/>Usa o sistema]
-    frontend[Frontend<br/>Lovable (Vite.js + Windy)<br/>Interface Web acessada por usuários]
-    database[(Banco de Dados<br/>PostgreSQL<br/>Armazena dados)]
-    emailService[Serviço de E-mail<br/>SendGrid / Amazon SES<br/>Envio de e-mails]
-    paymentProvider[Gateway de Pagamento<br/>Stripe / PayPal<br/>Gerencia assinaturas]
+    user["Usuário<br/>Usa o sistema"]
+    frontend["Frontend<br/>Lovable (Vite.js + Windy)<br/>Interface Web acessada por usuários"]
+    database[("Banco de Dados<br/>PostgreSQL<br/>Armazena dados")]
+    emailService["Serviço de E-mail<br/>SendGrid / Amazon SES<br/>Envio de e-mails"]
+    paymentProvider["Gateway de Pagamento<br/>Stripe / PayPal<br/>Gerencia assinaturas"]
 
     %% Sistema Principal
     subgraph "Backend - API (FastAPI)"
-        api[API<br/>Camada central de lógica do sistema]
+        api["API<br/>Camada central de lógica do sistema"]
         
         %% Componentes internos
-        authModule[Módulo de Autenticação<br/>Python<br/>Gerencia login via OAuth ou credenciais, usando Strategy Pattern]
-        userModule[Módulo de Usuários<br/>Python<br/>Criação, leitura e atualização de dados de usuários]
-        documentModule[Módulo de Documentos<br/>Python<br/>Upload e processamento de documentos]
-        simulationModule[Módulo de Simulação<br/>Python + LangChain<br/>Realiza simulações de aposentadoria com IA]
-        paymentModule[Módulo de Pagamentos<br/>Python<br/>Integra-se com Stripe/PayPal para gerenciar assinaturas]
-        notificationModule[Módulo de Notificações<br/>Python<br/>Gera notificações e confirmações por e-mail]
-        reportModule[Módulo de Relatórios<br/>Python<br/>Geração de relatórios personalizados para usuários]
+        authModule["Módulo de Autenticação<br/>Python<br/>Gerencia login via OAuth ou credenciais, usando Strategy Pattern"]
+        userModule["Módulo de Usuários<br/>Python<br/>Criação, leitura e atualização de dados de usuários"]
+        documentModule["Módulo de Documentos<br/>Python<br/>Upload e processamento de documentos"]
+        simulationModule["Módulo de Simulação<br/>Python + LangChain<br/>Realiza simulações de aposentadoria com IA"]
+        paymentModule["Módulo de Pagamentos<br/>Python<br/>Integra-se com Stripe/PayPal para gerenciar assinaturas"]
+        notificationModule["Módulo de Notificações<br/>Python<br/>Gera notificações e confirmações por e-mail"]
+        reportModule["Módulo de Relatórios<br/>Python<br/>Geração de relatórios personalizados para usuários"]
     end
 
     %% Relacionamentos principais
