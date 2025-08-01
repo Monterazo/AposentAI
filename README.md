@@ -1,3 +1,4 @@
+
 # AposentAI
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
@@ -130,8 +131,3 @@ Este projeto está em **desenvolvimento ativo**. Novas funcionalidades, melhoria
 ## 🖼️ Screenshots
 
 *Em breve: imagens da interface serão adicionadas aqui.*
-
-## 🙏 Acknowledgements
-
-Este projeto foi originalmente **forkado** de [Full Stack FastAPI Template](https://github.com/fastapi/full-stack-fastapi-template), criado pela equipe FastAPI.  
-Agradecemos à comunidade FastAPI pelo template e pelas tecnologias utilizadas como base.
