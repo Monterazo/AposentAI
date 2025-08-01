@@ -1,78 +1,133 @@
-# Projeto de Engenharia de Software: AposentAI
 
-Agente de IA programado para fazer análises para a Previdência Social brasileira.
+# AposentAI
+
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![GitHub Issues](https://img.shields.io/github/issues/Monterazo/AposentAI.svg)](https://github.com/Monterazo/AposentAI/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Monterazo/AposentAI.svg)](https://github.com/Monterazo/AposentAI/pulls)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 ## Descrição
 
-Este projeto desenvolve uma solução de Inteligência Artificial para otimizar processos na Previdência Social brasileira. Através da análise automatizada de dados, a IA visa agilizar a concessão de benefícios, aprimorar a gestão de processos judiciais e fortalecer o combate à fraude, contribuindo para um sistema mais eficiente e transparente.
+O **AposentAI** é um agente de Inteligência Artificial desenvolvido para otimizar processos na **Previdência Social brasileira**. O sistema automatiza análises, agiliza concessões de benefícios, melhora a gestão de processos judiciais e reforça o combate à fraude, tornando a Previdência mais eficiente e transparente.
 
-## 🔗 Recursos do Projeto
+## 🏁 Início Rápido
 
-* **Quadro Kanban:** [Backlog · Kanban](https://github.com/users/Monterazo/projects/3)
-* **Issues (Tarefas e Bugs):** [Página de Issues](https://github.com/Monterazo/AposentAI/issues)
+Essas instruções ajudarão você a ter uma cópia do projeto rodando localmente para desenvolvimento e testes.
 
-## Objetivos Principais e Funcionalidades Esperadas
+### Pré-requisitos
 
-Os principais objetivos deste projeto são:
+Antes de começar, certifique-se de ter instalado:
 
-* **Automatizar a análise de documentos:** Extrair informações relevantes de documentos commo comprovantes de renda, utilizando APIS de Processamento de Linguagem Natural.
-* **Gerar relatórios e insights:** Fornecer relatórios e insights para auxiliar os servidores da Previdência Social na tomada de decisões.
+```bash
+Python 3.11+
+Node.js (recomenda-se versão LTS)
+PostgreSQL
+Git
+```
 
-## Funcionalidades Principais
+### Instalação
 
-* **Módulo de Análise de Documentos:**
-    * Extração de texto de diferentes formatos (PDF, imagens).
-    * Classificação e categorização de documentos.
-    * Extração de entidades nomeadas (nomes, datas, valores).
+Clone o repositório:
 
-* **Módulo de Interface e Relatórios:**
-    * Interface web para interação com o agente de IA.
-    * Visualização de dados e geração de relatórios.
+```bash
+git clone https://github.com/Monterazo/AposentAI.git
+cd AposentAI
+```
 
-## 🏛️ Arquitetura e Estrutura do Código
+Instale as dependências:
 
-A arquitetura do sistema segue o modelo C4. Os diagramas (Contexto, Contêiner e Componentes) estarão disponíveis em um diretório específico no repositório para consulta.
+```bash
+# Backend
+cd backend
+pip install -r requirements.txt
 
-## Tecnologias Utilizadas
+# Frontend
+cd ../frontend
+npm install
+```
 
-* **Backend:** Python, Django
-* **Frontend:** Vite (React)
-* **IA & Dados:** LangChain, ChromaDB
-* **Banco de Dados:** PostgreSQL
-* **Gestão:** Github Projects (Kanban e gestão ágil)
+Configure o banco de dados (PostgreSQL):
 
-## Pré-requisitos
+```bash
+# Exemplo (ajuste com suas credenciais)
+createdb aposentai_db
+```
 
-Antes de começar, certifique-se de ter instalado em sua máquina:
+Consulte instruções completas no arquivo [`BUILD.md`](BUILD.md).
 
-* Python 
-* Node.js 
-* PostgreSQL
-* Git
+## 💡 Uso
 
-## 🚀 Como Executar o Projeto
+Exemplo de execução (detalhes no BUILD.md):
 
-As instruções detalhadas para configurar o ambiente e executar o projeto localmente estão em nosso guia de build.
+```bash
+# Iniciar backend (Django)
+cd backend
+python manage.py runserver
 
-➡️ **Consulte o arquivo [BUILD.md](BUILD.md)**
+# Iniciar frontend (Vite)
+cd ../frontend
+npm run dev
+```
 
-## 🤝 Como Contribuir
+Acesse o sistema em `http://localhost:5173`
 
-Adoramos contribuições! Se você quer nos ajudar a melhorar o AposentAI, por favor, leia nosso guia de contribuição para entender nosso fluxo de trabalho e boas práticas.
+## ✅ Funcionalidades
 
-➡️ **Consulte o arquivo [CONTRIBUTING.md](CONTRIBUTING.md)**
+- **Automatização da análise de documentos**
+  - Extração de texto (PDFs, imagens)
+  - Classificação e categorização
+  - Extração de entidades nomeadas (nomes, datas, valores)
+  
+- **Geração de relatórios e insights**
+  - Visualização de dados
+  - Interface web amigável para servidores da Previdência
+  - Exportação de relatórios automatizados
 
-## Lista de Issues (Tarefas Iniciais)
+## 📚 Documentação
 
-A lista de tarefas iniciais está disponível e sendo gerenciada em nossa [página de Issues](https://github.com/Monterazo/AposentAI/issues).
+Os diagramas C4 (Contexto, Contêiner e Componentes) estarão disponíveis na pasta `/docs/arquitetura`.
 
-* Implementar pipeline de coleta de dados
-* Desenvolver módulo de análise com IA
-* Gerar relatórios automáticos (label: `good first issue`)
-* Realizar testes de performance e precisão
+A documentação técnica será incluída futuramente. Por enquanto, utilize os arquivos `BUILD.md` e `CONTRIBUTING.md`.
 
-## Equipe
+## 🎯 Como Contribuir
 
-* **Anita Monteiro:** Full Stack Developer
-* **Lucas Monterazzo:** Machine Learning Engineer
-* **Lucas Rodrigues:** UX/UI Designer and Frontend Developer
+Contribuições são sempre bem-vindas! Para colaborar:
+
+1. Faça um fork do projeto
+2. Crie uma branch: `git checkout -b minha-nova-feature`
+3. Faça suas alterações
+4. Commit: `git commit -m 'feat: nova funcionalidade'`
+5. Push: `git push origin minha-nova-feature`
+6. Abra um Pull Request
+
+➡️ Leia o guia de contribuição em [`CONTRIBUTING.md`](CONTRIBUTING.md)
+
+## 📌 Diretrizes de Contribuição
+
+- Use boas práticas de Git (commits descritivos)
+- Documente seu código
+- Testes são sempre bem-vindos
+- Use issues com tags (`good first issue`, `bug`, etc.)
+
+## 📝 Licença
+
+Este projeto está licenciado sob a Licença MIT — veja o arquivo [`LICENSE`](LICENSE) para detalhes.
+
+## 👥 Créditos
+
+- **Lucas Monterazzo** (@Monterazo) — Machine Learning Engineer & Líder do Projeto  
+- **Anita Monteiro** — Full Stack Developer  
+- **Lucas Rodrigues** — UX/UI Designer & Frontend Developer
+
+## ❓ FAQ
+
+**P:** Como faço para configurar o ambiente?  
+**R:** Siga as instruções em [BUILD.md](BUILD.md), que explicam passo a passo a configuração de backend, frontend e banco de dados.
+
+## 📊 Estado do Projeto
+
+Este projeto está em **desenvolvimento ativo**. Novas funcionalidades, melhorias e correções são feitas continuamente.
+
+## 🖼️ Screenshots
+
+*Em breve: imagens da interface serão adicionadas aqui.*
