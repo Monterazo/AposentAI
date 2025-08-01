@@ -266,30 +266,52 @@ A arquitetura do código é modular, com cada funcionalidade encapsulada. Os pri
 
 -----
 
-## 5\. Decisões Arquiteturais
+5. Decisões Arquiteturais
+5.1. Decisões Importantes
+Decisão 1: Adoção do FastAPI (Python) para o Backend
+Descrição: Foi decidido utilizar o framework FastAPI para a construção do "Backend - API".
 
-### 5.1. Decisões Importantes
+Justificativa: A escolha é estratégica para a integração nativa com LangChain e o ecossistema de IA. A performance assíncrona do FastAPI é ideal para orquestrar chamadas a APIs externas (IA, pagamentos) e a validação de dados com Pydantic acelera o desenvolvimento.
 
-*(Esta seção deve ser preenchida pela equipe com as principais decisões arquiteturais do projeto, suas justificativas e impactos. Exemplos: escolha do FastAPI, uso de LangChain, arquitetura modular, etc.)*
+Impacto: Alta velocidade de desenvolvimento, performance elevada para requisições concorrentes e sinergia total com as ferramentas de IA.
 
-  - **Decisão:** [Nome ou breve descrição da decisão]
-      - **Descrição:** [Detalhes sobre a decisão]
-      - **Justificativa:** [Motivo pelo qual a decisão foi tomada]
-      - **Impacto:** [Impacto da decisão no sistema]
+Decisão 2: Arquitetura em Monolito Modular
+Descrição: O sistema foi projetado como um Monolito com forte separação lógica interna em Módulos (Componentes).
 
------
+Justificativa: Para um produto em estágio inicial, esta abordagem é mais simples de desenvolver, testar e implantar. A estrutura modular permite que o código seja organizado e facilita uma futura extração de microsserviços, se necessário.
 
-## 6\. Considerações Finais
+Impacto: Redução da complexidade operacional, desenvolvimento inicial mais rápido e um caminho claro para evolução da arquitetura.
 
-### 6.1. Padrões e Práticas
+Decisão 3: Uso do PostgreSQL como Banco de Dados Relacional
+Descrição: Foi escolhido o PostgreSQL como o sistema de gerenciamento de banco de dados principal.
 
-*(Esta seção deve ser preenchida com os padrões e práticas adotados pela equipe.)*
+Justificativa: Dados de usuários, casos e transações financeiras são estruturados e requerem a consistência e as garantias transacionais (ACID) que um banco de dados relacional oferece.
 
-  - **Padrões:** [Ex: MVC, CQRS, Strategy Pattern, Event-Driven Architecture]
-  - **Práticas:** [Ex: Continuous Integration, Code Review, Testes Automatizados (TDD/BDD)]
+Impacto: Alta consistência e integridade dos dados, poder de consulta e confiabilidade.
 
-### 6.2. Próximos Passos
+6. Considerações Finais
+6.1. Padrões e Práticas
+Padrões Arquiteturais:
 
-*(Esta seção deve indicar melhorias futuras ou áreas a serem exploradas para a evolução da arquitetura.)*
+Arquitetura Hexagonal (Portas e Adaptadores): A lógica de negócio é isolada das ferramentas externas (IA, BD, Pagamentos), melhorando a testabilidade e a flexibilidade para futuras trocas de provedores.
 
-  - [Ex: Implementar cache distribuído com Redis, Adotar um novo serviço de IA para análise de documentos.]
+Injeção de Dependência (DI): Utilizada pelo FastAPI para fornecer aos componentes suas dependências, promovendo baixo acoplamento.
+
+Strategy Pattern: Aplicado no Módulo de Autenticação para permitir a troca flexível entre diferentes métodos de login.
+
+Repository Pattern: Usado para abstrair a camada de acesso a dados, centralizando toda a comunicação com o banco de dados.
+
+Práticas de Desenvolvimento:
+
+CI/CD (Integração e Entrega Contínua): Automação dos processos de teste e implantação com ferramentas como GitHub Actions para garantir entregas rápidas e seguras.
+
+Revisão de Código (Code Review): Prática obrigatória para todo novo código, visando garantir a qualidade, compartilhar conhecimento e manter a consistência.
+
+Testes Automatizados: Cobertura de testes em múltiplos níveis (Unitários, Integração e End-to-End) para garantir a corretude e a confiança no sistema.
+
+6.2. Próximos Passos
+Implementar Cache Distribuído: Introduzir um serviço como o Redis para armazenar resultados de simulações frequentes, a fim de reduzir a carga no banco de dados e melhorar a latência para o usuário.
+
+Aprimorar a Observabilidade: Integrar ferramentas de monitoramento (ex: Prometheus, Grafana) e logging centralizado para obter uma visão mais profunda da saúde e performance da aplicação em produção.
+
+Evoluir a Integração com IA: Explorar modelos de IA mais avançados para análise de documentos (OCR) e personalização automática das simulações.
