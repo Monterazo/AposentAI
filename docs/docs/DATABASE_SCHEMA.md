@@ -1,4 +1,3 @@
-
 ## Diagrama Entidade-Relacionamento (ER)
 
 O diagrama abaixo oferece uma visão geral das entidades principais e como elas se conectam.
@@ -67,8 +66,8 @@ erDiagram
     USUARIO ||--|{ DOCUMENTO : "envia"
     USUARIO ||--|{ SIMULACAO : "realiza para si"
 
-    USUARIO {ADVOGADO} ||--|{ CASO : "gerencia"
-    USUARIO {CLIENTE} ||--o| CASO : "é cliente de"
+    USUARIO ||--|{ CASO : "gerencia (advogado)"
+    USUARIO ||--o| CASO : "é cliente de"
 
     CASO ||--|{ DOCUMENTO : "contém"
     CASO ||--|{ SIMULACAO : "contém"
