@@ -6,9 +6,20 @@
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Monterazo/AposentAI.svg)](https://github.com/Monterazo/AposentAI/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-## Descrição
+## 📋 Sobre o Projeto
 
 O **AposentAI** é um agente de Inteligência Artificial desenvolvido para otimizar processos na **Previdência Social brasileira**. O sistema automatiza análises, agiliza concessões de benefícios, melhora a gestão de processos judiciais e reforça o combate à fraude, tornando a Previdência mais eficiente e transparente.
+
+### 🏗️ Base Tecnológica
+
+Este projeto é baseado no **[Full Stack FastAPI Template](https://github.com/fastapi/full-stack-fastapi-template)** desenvolvido pela comunidade FastAPI, que fornece uma base sólida para aplicações web modernas com:
+
+- **Backend**: FastAPI, SQLModel, PostgreSQL
+- **Frontend**: React, TypeScript, Vite, Chakra UI
+- **DevOps**: Docker Compose, Traefik, GitHub Actions
+- **Qualidade**: Testes automatizados, linting, CI/CD
+
+> **Agradecimentos**: Agradecemos à comunidade FastAPI e aos contribuidores do template original por fornecerem uma base excelente para o desenvolvimento deste projeto. Veja [CREDITS.md](AposentAI/CREDITS.md) para mais detalhes sobre os créditos.
 
 ## 🏁 Início Rápido
 

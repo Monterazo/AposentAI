@@ -1,4 +1,8 @@
-# FastAPI Project - Frontend
+# AposentAI - Frontend
+
+> **Baseado no [Full Stack FastAPI Template](https://github.com/fastapi/full-stack-fastapi-template)**
+
+Este é o frontend do sistema AposentAI, desenvolvido com React e baseado no template da comunidade FastAPI.
 
 The frontend is built with [Vite](https://vitejs.dev/), [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), [TanStack Query](https://tanstack.com/query), [TanStack Router](https://tanstack.com/router) and [Chakra UI](https://chakra-ui.com/).
 

@@ -1,4 +1,8 @@
-# FastAPI Project - Backend
+# AposentAI - Backend
+
+> **Baseado no [Full Stack FastAPI Template](https://github.com/fastapi/full-stack-fastapi-template)**
+
+Este é o backend do sistema AposentAI, desenvolvido com FastAPI e baseado no template da comunidade FastAPI.
 
 ## Requirements
 
