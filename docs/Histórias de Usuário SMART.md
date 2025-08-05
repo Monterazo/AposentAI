@@ -22,7 +22,7 @@ A história é atingível dentro de uma sprint. A equipe possui as habilidades n
 Esta história é extremamente relevante, pois o upload do CNIS é o principal método de entrada de dados para o motor de simulação de IA. Sem esta funcionalidade, o usuário não pode fornecer as informações necessárias para a funcionalidade central do AposentAI, bloqueando a entrega de valor do produto.
 
 ### Time-bound (Limitada no Tempo)
-Esta história deve ser concluída dentro do período da **Sprint 1**, que tem a duração de duas semanas (de 05/08/2025 a 19/08/2025).
+Esta história deve ser concluída dentro do período da **Sprint 1**, que tem a duração de duas semanas (de 05/07/2025 a 11/08/2025).
 
 ## Critérios de Aceitação
 1.  **DADO QUE** eu sou um usuário logado na minha dashboard, **QUANDO** eu clico no botão "Enviar Documento", **ENTÃO** um seletor de arquivos do meu sistema operacional deve abrir.
