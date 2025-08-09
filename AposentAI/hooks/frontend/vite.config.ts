@@ -1,14 +1,45 @@
-import path from "node:path"
-import { TanStackRouterVite } from "@tanstack/router-vite-plugin"
-import react from "@vitejs/plugin-react-swc"
-import { defineConfig } from "vite"
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import path from "path";
+import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  server: {
+    host: "::",
+    port: 5173,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+    headers: {
+      // Security headers
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'DENY',
+      'X-XSS-Protection': '1; mode=block',
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+      'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+    },
+  },
+  plugins: [
+    react(),
+    mode === 'development' &&
+    componentTagger(),
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  plugins: [react(), TanStackRouterVite()],
-})
+  build: {
+    rollupOptions: {
+      output: {
+        // Security: Don't expose source maps in production
+        sourcemap: mode === 'development',
+      },
+    },
+  },
+}));
