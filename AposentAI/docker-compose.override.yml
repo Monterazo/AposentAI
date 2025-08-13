@@ -1,0 +1,36 @@
+﻿services:
+  prestart:
+    build:
+      context: ./hooks/backend
+
+  backend:
+    build:
+      context: ./hooks/backend
+    command:
+      - fastapi
+      - run
+      - --reload
+      - "app/main.py"
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./hooks/frontend
+      args:
+        - VITE_API_URL=http://localhost:8000
+        - NODE_ENV=development
+    ports:
+      - "5173:80"
+
+  db:
+    ports:
+      - "5432:5432"
+
+  adminer:
+    ports:
+      - "8080:8080"
+
+networks:
+  traefik-public:
+    external: false
