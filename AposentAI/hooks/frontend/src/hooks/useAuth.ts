@@ -1,77 +1,94 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { useNavigate } from "@tanstack/react-router"
-import { useState } from "react"
+import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
+import { authApi } from '@/lib/api';
 
-import {
-  type Body_login_login_access_token as AccessToken,
-  type ApiError,
-  LoginService,
-  type UserPublic,
-  type UserRegister,
-  UsersService,
-} from "@/client"
-import { handleError } from "@/utils"
-
-const isLoggedIn = () => {
-  return localStorage.getItem("access_token") !== null
+interface User {
+  id: string;
+  email: string;
+  full_name: string;
+  is_active: boolean;
+  is_superuser: boolean;
 }
 
-const useAuth = () => {
-  const [error, setError] = useState<string | null>(null)
-  const navigate = useNavigate()
-  const queryClient = useQueryClient()
-  const { data: user } = useQuery<UserPublic | null, Error>({
-    queryKey: ["currentUser"],
-    queryFn: UsersService.readUserMe,
-    enabled: isLoggedIn(),
-  })
+interface AuthContextType {
+  user: User | null;
+  isLoading: boolean;
+  isAuthenticated: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  register: (userData: { email: string; password: string; full_name: string }) => Promise<void>;
+  logout: () => void;
+}
 
-  const signUpMutation = useMutation({
-    mutationFn: (data: UserRegister) =>
-      UsersService.registerUser({ requestBody: data }),
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-    onSuccess: () => {
-      navigate({ to: "/login" })
-    },
-    onError: (err: ApiError) => {
-      handleError(err)
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ["users"] })
-    },
-  })
-
-  const login = async (data: AccessToken) => {
-    const response = await LoginService.loginAccessToken({
-      formData: data,
-    })
-    localStorage.setItem("access_token", response.access_token)
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider');
   }
+  return context;
+};
 
-  const loginMutation = useMutation({
-    mutationFn: login,
-    onSuccess: () => {
-      navigate({ to: "/" })
-    },
-    onError: (err: ApiError) => {
-      handleError(err)
-    },
-  })
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const isAuthenticated = !!user;
+
+  useEffect(() => {
+    const initializeAuth = async () => {
+      const token = localStorage.getItem('access_token');
+      if (token) {
+        try {
+          const userData = await authApi.getCurrentUser();
+          setUser(userData);
+        } catch (error) {
+          console.error('Failed to get user data:', error);
+          localStorage.removeItem('access_token');
+        }
+      }
+      setIsLoading(false);
+    };
+
+    initializeAuth();
+  }, []);
+
+  const login = async (email: string, password: string) => {
+    try {
+      const response = await authApi.login(email, password);
+      localStorage.setItem('access_token', response.access_token);
+      
+      const userData = await authApi.getCurrentUser();
+      setUser(userData);
+    } catch (error) {
+      console.error('Login failed:', error);
+      throw error;
+    }
+  };
+
+  const register = async (userData: { email: string; password: string; full_name: string }) => {
+    try {
+      await authApi.register(userData);
+      // After successful registration, automatically log in
+      await login(userData.email, userData.password);
+    } catch (error) {
+      console.error('Registration failed:', error);
+      throw error;
+    }
+  };
 
   const logout = () => {
-    localStorage.removeItem("access_token")
-    navigate({ to: "/login" })
-  }
+    authApi.logout();
+    setUser(null);
+  };
 
-  return {
-    signUpMutation,
-    loginMutation,
-    logout,
+  const value = {
     user,
-    error,
-    resetError: () => setError(null),
-  }
-}
+    isLoading,
+    isAuthenticated,
+    login,
+    register,
+    logout,
+  };
 
-export { isLoggedIn }
-export default useAuth
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};
