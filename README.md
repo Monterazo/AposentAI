@@ -8,7 +8,7 @@
 
 ## 📋 Sobre o Projeto
 
-O **AposentAI** é um agente de Inteligência Artificial desenvolvido para otimizar processos na **Previdência Social brasileira**. O sistema automatiza análises, agiliza concessões de benefícios, melhora a gestão de processos judiciais e reforça o combate à fraude, tornando a Previdência mais eficiente e transparente.
+O **AposentAI** é um agente de Inteligência Artificial desenvolvida para otimizar processos na **Previdência Social brasileira**. O sistema automatiza análises, agiliza concessões de benefícios, melhora a gestão de processos judiciais e reforça o combate à fraude, tornando a Previdência mais eficiente e transparente.
 
 ### 🏗️ Base Tecnológica
 
